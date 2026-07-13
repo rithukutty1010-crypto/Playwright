@@ -1,0 +1,15 @@
+let{test}=require("@playwright/test")
+test.use({
+headless:false,
+browserName:"chromium"
+})
+test("webtable",async({page})=>{
+await page.goto("https://demo.testautomationtv.com/demo/table?utm_source=chatgpt.com")
+let rows=await page.locator("table tbody tr")
+let rowscount=await rows.count()
+console.log("Rows count : ",rowscount)
+for(d8 )
+
+
+
+})

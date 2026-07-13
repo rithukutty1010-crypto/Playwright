@@ -1,0 +1,49 @@
+let {test}=require("@playwright/test")
+test('Method',async({page})=>{
+await page.goto("https://www.amazon.in/")
+
+let find=await page.getByPlaceholder("Search Amazon.in")
+//await find.click()
+await page.waitForTimeout(3000);
+let visible=await find.isVisible()
+if(visible){
+await find.fill("flicka")
+}
+else{
+console.log("Not visible")
+}
+
+await find.type("sugar lipbalm");
+await page.waitForTimeout(3000);
+await find.clear();
+await find.type("lipbalm");
+await page.waitForTimeout(3000);
+let searchbutton= await page.locator('//input[@type="submit"]')
+await searchbutton.click();
+await page.waitForTimeout(5000);
+//iseditable
+let edit=await page.getByPlaceholder("Search Amazon.in")
+await edit.isEditable()
+await page.waitForTimeout(5000);
+//isdisable
+let disable=await page.locator('id=nav-logo-sprites')
+//await disable.isDisabled()
+if(disable){
+await disable.isDisabled()
+}
+else{
+console.log("able to see")
+}
+await page.waitForTimeout(5000);
+
+//text content
+//let text=await page.getByText("Delivering to Chennai 600040")
+//if(text){
+//await text.textContent()
+}
+//else{
+//console.log("failed")
+//}
+//await page.waitForTimeout(5000);
+
+})
